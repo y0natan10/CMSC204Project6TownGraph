@@ -1,0 +1,37 @@
+DO NOT DELETE
+this is a templete for JavaFX and JUnit
+just right click the folder
+refactor --> rename
+rename the project to whatever you need
+
+FOR JAVAFX
+--module-path "C:\Users\PBfre\Downloads\openjfx-21.0.8_windows-x64_bin-sdk\javafx-sdk-21.0.8\lib" --add-modules javafx.controls,javafx.fxml
+put that in the VM arguments
+right click the Driver file, click run as, run configurations, 
+go to the arguments tab, put it in the VM Arguments section
+
+for the git repo
+if there's already been a repo made for this project, 
+do team-->disconnect, then do all the commands below
+remove all traces of github to make it clean and easy
+make a new repository
+create a gitignore
+add the remote so computer knows where the files are being pushed to
+make sure you're on the right branch
+
+afterward do team-->share project, and pick the folder
+
+rd /s /q .git
+git init
+type nul > .gitignore
+git remote add origin LINKGOESHERE
+git branch -M main
+
+
+example
+rd /s /q .git
+git init
+type nul > .gitignore
+git remote add origin https://github.com/y0natan10/CMSC204Project6TownGraph.git
+git branch -M main
+
