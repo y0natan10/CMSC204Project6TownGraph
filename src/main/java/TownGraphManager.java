@@ -69,6 +69,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
 		return res;
 	}
 
+	// TODO: fix this
 	@Override
 	public ArrayList<String> getPath(String town1, String town2) {
 		ArrayList<String> res = new ArrayList<String>();
