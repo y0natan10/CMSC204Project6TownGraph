@@ -1,6 +1,9 @@
 //Yonatan Rubin
 //M21105076
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -69,7 +72,6 @@ public class TownGraphManager implements TownGraphManagerInterface {
 		return res;
 	}
 
-	// TODO: fix this
 	@Override
 	public ArrayList<String> getPath(String town1, String town2) {
 		ArrayList<String> res = new ArrayList<String>();
@@ -81,6 +83,26 @@ public class TownGraphManager implements TownGraphManagerInterface {
 			current = current.getBackPath();
 		}
 		return res;
+	}
+
+	/**
+	 * needed to add this method because it was called in FXMainPane
+	 * 
+	 * @param string
+	 * @return a town with the name of string
+	 */
+	public Town getTown(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param selectedFile
+	 */
+	public void populateTownGraph(File selectedFile) throws FileNotFoundException, IOException {
+		// TODO Auto-generated method stub
+
 	}
 
 }
