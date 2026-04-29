@@ -1,0 +1,28 @@
+//Yonatan Rubin
+//M21105076
+//Self made text file because i don't know where the intended text files are
+//road-name,miles;town-name; town-name
+//I-94,282;Chicago;Detroit
+
+I-94,282;Chicago;Detroit
+I-80,282;Detroit;New York
+I-55,510;Chicago;Kansas City
+I-65,182;Chicago;Indianapolis
+I-69,287;Detroit;Indianapolis
+I-76,524;Detroit;Washington DC
+I-95,225;New York;Washington DC
+I-70,482;Kansas City;Indianapolis
+I-70,588;Indianapolis;Washington DC
+I-65,288;Indianapolis;Nashville
+I-95,109;Washington DC;Richmond
+I-24,555;Kansas City;Nashville
+I-40,666;Washington DC;Nashville
+I-49,513;Kansas City;Dallas
+I-81,614;Nashville;Richmond
+I-85,533;Richmond;Atlanta
+I-75,249;Nashville;Atlanta
+I-40,664;Nashville;Dallas
+I-20,782;Dallas;Atlanta
+I-49,506;Dallas;New Orleans
+I-75,664;Atlanta;Miami
+I-10,886;New Orleans;Miami

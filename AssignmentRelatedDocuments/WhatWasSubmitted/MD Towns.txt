@@ -1,0 +1,25 @@
+//Yonatan Rubin
+//M21105076
+//Self made text file because i don't know where the intended text files are
+//road-name,miles;town-name; town-name
+//I-94,282;Chicago;Detroit
+
+I270N,14;Frederick;Clarksburg
+MD109,13;Clarksburg;Poolesville
+MD108,14;Clarksburg;Olney
+I270-NC,5;Clarksburg;Germantown
+MD121,8;Clarksburg;Boyds
+MD118E,15;Olney;Germantown
+MD117W,9;Poolesville;Boyds
+MD117E,4;Boyds;Germantown
+Bowie Mill,11;Olney;Gaithersburg
+I270-C,6;Germantown;Gaithersburg
+MD28,8;Poolesville;Darnestown
+MD118W,6;Germantown;Darnestown
+MD97,8;Olney;Rockville
+MD124,7;Darnestown;Gaithersburg
+I270-SC,7;Gaithersburg;Rockville
+MD190W,8;Darnestown;Potomac
+MD189,6;Potomac;Rockville
+I270N-S,7;Rockville;Bethesda
+MD190E,7;Potomac;Bethesda

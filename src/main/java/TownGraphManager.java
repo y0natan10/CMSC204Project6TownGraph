@@ -6,10 +6,51 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class TownGraphManager implements TownGraphManagerInterface {
 
 	private Graph townGraph = new Graph();
+
+	/**
+	 * reads in the details of a set of towns and their roads and constructs a graph
+	 * out of them
+	 * 
+	 * @param selectedFile
+	 */
+	public void populateTownGraph(File selectedFile) throws FileNotFoundException, IOException {
+		// template yoinked from the assignment doc
+
+		// road-name,miles;town-name; town-name
+		// I-94,282;Chicago;Detroit
+
+		Scanner scanner = new Scanner(selectedFile);
+
+		// 1. loop as long as there is another line of data
+		while (scanner.hasNextLine()) {
+			String line = scanner.nextLine();
+			// first 5 lines of each file are comments made by me
+			// need to skip them to prevent the program from breaking
+			if (line.charAt(0) == '/') {
+				continue;
+			}
+			// 2. split by semicolon OR comma
+			// The regex [,;] looks for either character
+			String[] parts = line.split("[,;]");
+
+			// 3. validate and process (Road name, miles, Town 1, Town 2)
+			if (parts.length == 4) {
+				this.townGraph.addEdge(new Town(parts[2]), new Town(parts[3]), Integer.parseInt(parts[1]), parts[0]);
+				// debugging line
+				System.out.println(
+						(new Road(new Town(parts[2]), new Town(parts[3]), Integer.parseInt(parts[1]), parts[0]))
+								.toString());
+			} else {
+				throw new IOException("jinkies JVM, this user sucks at formatting");
+			}
+		}
+		scanner.close();
+	}
 
 	@Override
 	public boolean addRoad(String town1, String town2, int weight, String roadName) {
@@ -92,17 +133,11 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	 * @return a town with the name of string
 	 */
 	public Town getTown(String string) {
-		// TODO Auto-generated method stub
+		for (Town t : this.townGraph.getTowns()) {
+			if (t.getName().equals(string)) {
+				return t;
+			}
+		}
 		return null;
 	}
-
-	/**
-	 * 
-	 * @param selectedFile
-	 */
-	public void populateTownGraph(File selectedFile) throws FileNotFoundException, IOException {
-		// TODO Auto-generated method stub
-
-	}
-
 }
