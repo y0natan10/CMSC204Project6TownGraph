@@ -34,4 +34,3 @@ git init
 type nul > .gitignore
 git remote add origin https://github.com/y0natan10/CMSC204Project6TownGraph.git
 git branch -M main
-

@@ -85,7 +85,7 @@ public class GraphTest {
 		Set<Road> roads = graph.edgeSet();
 		ArrayList<String> roadArrayList = new ArrayList<String>();
 		for(Road road : roads)
-			roadArrayList.add(road.getName());
+			roadArrayList.add(road.getDescription());
 		Collections.sort(roadArrayList);
 		assertEquals("Road_1", roadArrayList.get(0));
 		assertEquals("Road_10", roadArrayList.get(1));
@@ -100,7 +100,7 @@ public class GraphTest {
 		Set<Road> roads = graph.edgesOf(town[1]);
 		ArrayList<String> roadArrayList = new ArrayList<String>();
 		for(Road road : roads)
-			roadArrayList.add(road.getName());
+			roadArrayList.add(road.getDescription());
 		Collections.sort(roadArrayList);
 		assertEquals("Road_1", roadArrayList.get(0));
 		assertEquals("Road_2", roadArrayList.get(1));
