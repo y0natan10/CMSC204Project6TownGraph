@@ -19,8 +19,8 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	 * @param selectedFile
 	 */
 	public void populateTownGraph(File selectedFile) throws FileNotFoundException, IOException {
+		// TODO: double check this method, file doesn't seem to be read
 		// template yoinked from the assignment doc
-
 		// road-name,miles;town-name; town-name
 		// I-94,282;Chicago;Detroit
 
@@ -113,6 +113,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
 		return res;
 	}
 
+	// TODO: there's something wrong here
 	@Override
 	public ArrayList<String> getPath(String town1, String town2) {
 		ArrayList<String> res = new ArrayList<String>();
