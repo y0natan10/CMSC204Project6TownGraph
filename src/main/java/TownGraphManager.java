@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * This class manages a graph of towns and roads through the graph field. it can
+ * read in text from a file and (assuming formatted correctly) will turn that
+ * text file in to a graph
+ */
 public class TownGraphManager implements TownGraphManagerInterface {
 
 	private Graph townGraph = new Graph();
@@ -19,7 +24,6 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	 * @param selectedFile
 	 */
 	public void populateTownGraph(File selectedFile) throws FileNotFoundException, IOException {
-		// TODO: double check this method, file doesn't seem to be read
 		// template yoinked from the assignment doc
 		// road-name,miles;town-name; town-name
 		// I-94,282;Chicago;Detroit

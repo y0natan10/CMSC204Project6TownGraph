@@ -6,6 +6,10 @@ import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Set;
 
+/**
+ * this class represents a collection of vertices, edges, and how they are
+ * connected
+ */
 public class Graph implements GraphInterface<Town, Road> {
 	private Set<Town> towns = new HashSet<>();
 	private Set<Road> roads = new HashSet<>();
