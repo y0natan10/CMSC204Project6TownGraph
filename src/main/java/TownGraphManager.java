@@ -31,7 +31,8 @@ public class TownGraphManager implements TownGraphManagerInterface {
 			String line = scanner.nextLine();
 			// first 5 lines of each file are comments made by me
 			// need to skip them to prevent the program from breaking
-			if (line.charAt(0) == '/') {
+			if (line.trim().isEmpty() || line.startsWith("//")) {
+				// if a line empty or if it's a comment line
 				continue;
 			}
 			// 2. split by semicolon OR comma
@@ -54,18 +55,23 @@ public class TownGraphManager implements TownGraphManagerInterface {
 
 	@Override
 	public boolean addRoad(String town1, String town2, int weight, String roadName) {
-		Town source = new Town(town1);
-		Town destination = new Town(town2);
+		Town t1 = this.getTown(town1);
+		Town t2 = this.getTown(town2);
 
-		// addEdge handles what happens if either town1 or town2 already exists
-		return (this.townGraph.addEdge(source, destination, weight, roadName) != null);
+		// if they don't exist, add them
+		if (t1 == null) {
+			t1 = new Town(town1);
+		}
+		if (t2 == null) {
+			t2 = new Town(town2);
+		}
+
+		return (this.townGraph.addEdge(t1, t2, weight, roadName) != null);
 	}
 
 	@Override
 	public String getRoad(String town1, String town2) {
-		Town source = new Town(town1);
-		Town destination = new Town(town2);
-		return this.townGraph.getEdge(source, destination).getDescription();
+		return this.townGraph.getEdge(this.getTown(town1), this.getTown(town2)).getDescription();
 	}
 
 	@Override
@@ -75,12 +81,12 @@ public class TownGraphManager implements TownGraphManagerInterface {
 
 	@Override
 	public boolean containsTown(String v) {
-		return this.townGraph.containsVertex(new Town(v));
+		return this.townGraph.containsVertex(this.getTown(v));
 	}
 
 	@Override
 	public boolean containsRoadConnection(String town1, String town2) {
-		return this.townGraph.containsEdge(new Town(town1), new Town(town2));
+		return this.townGraph.containsEdge(this.getTown(town1), this.getTown(town2));
 	}
 
 	@Override
@@ -95,12 +101,12 @@ public class TownGraphManager implements TownGraphManagerInterface {
 
 	@Override
 	public boolean deleteRoadConnection(String town1, String town2, String road) {
-		return (this.townGraph.removeEdge(new Town(town1), new Town(town2), 1, road) != null);
+		return (this.townGraph.removeEdge(this.getTown(town1), this.getTown(town2), 1, road) != null);
 	}
 
 	@Override
 	public boolean deleteTown(String v) {
-		return (this.townGraph.removeVertex(new Town(v)));
+		return (this.townGraph.removeVertex(this.getTown(v)));
 	}
 
 	@Override
@@ -113,18 +119,14 @@ public class TownGraphManager implements TownGraphManagerInterface {
 		return res;
 	}
 
-	// TODO: there's something wrong here
 	@Override
 	public ArrayList<String> getPath(String town1, String town2) {
-		ArrayList<String> res = new ArrayList<String>();
-		this.townGraph.dijkstraShortestPath(new Town(town1));
-		Town goal = new Town(town1);
-		Town current = new Town(town2);
-		while (current.getBackPath() != null && !current.getBackPath().equals(goal)) {
-			res.addFirst(current.getName());
-			current = current.getBackPath();
-		}
-		return res;
+		Town start = this.getTown(town1);
+		Town end = this.getTown(town2);
+
+		// one line :]
+		return ((start == null || end == null) ? new ArrayList<String>()
+				: this.townGraph.shortestPath(this.getTown(town1), this.getTown(town2)));
 	}
 
 	/**
