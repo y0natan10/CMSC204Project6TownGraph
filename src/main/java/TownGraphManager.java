@@ -43,8 +43,8 @@ public class TownGraphManager implements TownGraphManagerInterface {
 			if (parts.length == 4) {
 				String roadName = parts[0];
 				int distance = Integer.parseInt(parts[1]);
-				Town start = new Town(parts[2]);
-				Town end = new Town(parts[3]);
+				Town start = (this.getTown(parts[2]) == null ? new Town(parts[2]) : this.getTown(parts[2]));
+				Town end = (this.getTown(parts[3]) == null ? new Town(parts[3]) : this.getTown(parts[3]));
 
 				this.townGraph.addEdge(start, end, distance, roadName);
 
