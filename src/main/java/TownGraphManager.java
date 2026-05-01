@@ -41,15 +41,27 @@ public class TownGraphManager implements TownGraphManagerInterface {
 
 			// 3. validate and process (Road name, miles, Town 1, Town 2)
 			if (parts.length == 4) {
-				this.townGraph.addEdge(new Town(parts[2]), new Town(parts[3]), Integer.parseInt(parts[1]), parts[0]);
-				// debugging line
-				System.out.println(
-						(new Road(new Town(parts[2]), new Town(parts[3]), Integer.parseInt(parts[1]), parts[0]))
-								.toString());
+				String roadName = parts[0];
+				int distance = Integer.parseInt(parts[1]);
+				Town start = new Town(parts[2]);
+				Town end = new Town(parts[3]);
+
+				this.townGraph.addEdge(start, end, distance, roadName);
+
+				// debugging line to see the roads get added 1 by 1
+				// System.out.println(start.toString() + " via " + roadName + " to " + end + " "
+				// + distance + " mi ");
 			} else {
-				throw new IOException("jinkies JVM, this user sucks at formatting");
+				throw new IOException("jinkies, this user sucks at formatting");
 			}
 		}
+
+		// to make sure the roads are sorted alphabetically
+		// ArrayList<String> myList = new ArrayList<String>(this.allRoads());
+		// for (int i = 0; i < myList.size(); ++i) {
+		// System.out.println(myList.get(i).toString());
+		// }
+
 		scanner.close();
 	}
 
